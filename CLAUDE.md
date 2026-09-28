@@ -13,7 +13,9 @@ matter more than UI polish or feature breadth. Trial booking only — no regular
 
 ## Stack (fixed — do not substitute)
 
-- PHP 8.3 (container) + Laravel 13, MySQL 8.4 (InnoDB), PHPUnit, jQuery + Blade (later).
+- PHP 8.3 (container) + Laravel 13, MySQL 8.4 (InnoDB), PHPUnit.
+- Frontend: **React 19 + TypeScript** via Vite, served by the `node` container (port 5173). Blade only mounts it
+  (`resources/views/app.blade.php` → `resources/js/app.tsx`). This overrides the step files' "jQuery + Blade".
 - **Never SQLite** — it ignores `lockForUpdate()`, so locking would go untested.
 - Everything runs in Docker. Host PHP/Composer are **not** used. Do not install Laravel Boost
   or host PHP (Laravel's template AGENTS.md suggesting that was deliberately removed).
@@ -26,10 +28,15 @@ matter more than UI polish or feature breadth. Trial booking only — no regular
 | `php artisan test` | `./scripts/test.sh` |
 | `php artisan migrate:fresh --seed` | `./scripts/reset.sh` |
 | `composer <cmd>` | `docker compose exec app composer <cmd>` |
+| `npm <cmd>` | `docker compose exec node npm <cmd>` (never host npm: `node_modules` has Linux binaries) |
+| type-check TS | `docker compose exec node npm run typecheck` |
 
 `./setup.sh` = build + start + migrate + seed. `./scripts/down.sh [--purge]` = stop (purge deletes DB data).
 Tests always run against the `ottodot_test` database (forced in `phpunit.xml`); the demo DB is `ottodot`.
 `composer.json` pins `config.platform.php` to 8.3.0 to match the container — keep it.
+
+Demo login (no DB, user-requested override of "auth out of scope"): `POST /api/login` checks the single account in
+`config/auth.php` → `demo_user` (`DEMO_LOGIN_*` env). Stateless, throttled 5/min. React page: `/login`.
 
 ## Canonical vocabulary
 

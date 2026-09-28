@@ -7,3 +7,4 @@ Route::get('/', function () {
 });
 
 Route::view('/sample', 'sample');
+Route::view('/login', 'app');

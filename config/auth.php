@@ -114,4 +114,20 @@ return [
 
     'password_timeout' => env('AUTH_PASSWORD_TIMEOUT', 10800),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Demo Login
+    |--------------------------------------------------------------------------
+    |
+    | Single synthetic account checked by LoginController, with no database
+    | lookup. Placeholder until real parent accounts exist.
+    |
+    */
+
+    'demo_user' => [
+        'name' => env('DEMO_LOGIN_NAME', 'Demo Parent'),
+        'email' => env('DEMO_LOGIN_EMAIL', 'parent@example.com'),
+        'password' => env('DEMO_LOGIN_PASSWORD', 'password'),
+    ],
+
 ];
