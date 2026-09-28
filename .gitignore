@@ -29,3 +29,4 @@ Thumbs.db
 # Local-only work files
 notes.md
 /ai-steps/
+/.playwright-mcp/
