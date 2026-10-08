@@ -5,5 +5,7 @@ source "$(dirname "$0")/lib.sh"
 require_docker
 require_running
 
+# A cached config ignores phpunit.xml's env, so tests would hit the demo DB.
+app_exec php artisan config:clear >/dev/null
 info "Running tests against the ottodot_test database..."
 app_exec php artisan test "$@"
