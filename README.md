@@ -461,5 +461,5 @@ Rough split of the build time:
 
 ## Video walkthrough
 
-[Watch the walkthrough (about 7 minutes)](PASTE_YOUR_LINK_HERE): booking flow, duplicate and declined payment, the
-two-parent last-seat scenario, the parallel `race.sh` run, and the trade-offs.
+[Watch the walkthrough (about 6 minutes)] https://www.youtube.com/watch?v=b3b0P8a64RM: booking flow, duplicate and declined payment, the
+two-parent last-seat scenario, and the trade-offs.
